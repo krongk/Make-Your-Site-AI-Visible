@@ -1,16 +1,29 @@
 import Alpine from 'alpinejs';
 import intersect from '@alpinejs/intersect';
 import './index.css';
+import { translations } from './i18n';
 
 // Initialize Alpine Plugins
 Alpine.plugin(intersect);
+
+type Lang = 'zh' | 'en';
 
 // Define global Alpine data setup
 Alpine.data('appData', function() {
   return {
     activeChapter: 0,
     scrollProgress: 0,
+    lang: 'zh' as Lang,
     
+    t(key: keyof typeof translations['zh']) {
+      return translations[this.lang][key] || key;
+    },
+
+    toggleLang() {
+      this.lang = this.lang === 'zh' ? 'en' : 'zh';
+      document.documentElement.lang = this.lang === 'zh' ? 'zh-CN' : 'en';
+    },
+
     onScroll() {
       const el = (this as any).$refs.scrollContainer;
       if (!el) return;
