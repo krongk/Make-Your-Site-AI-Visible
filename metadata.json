@@ -1,0 +1,6 @@
+{
+  "name": "LLM Visibility App",
+  "description": "A vertical scrolling application discussing LLM visibility for websites, built with Alpine.js and TailwindCSS.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
