@@ -16,14 +16,14 @@ export const translations = {
     chapter3_h2: `双面打印 <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-3xl font-mono mt-2 block tracking-normal">同址 .md 路由</span>`,
     chapter3_p: `同一地址加上 <code class="text-white/80">.md</code>。解决“信息密度”的问题，让模型的上下文压力小很多。`,
     chapter3_tip: `<span class="text-purple-400">示例：</span><br/>
-<span class="text-gray-500">当前博客的访问地址：</span><br/>https://www.baklib.com/blog/llm-website-visibility<br/>
-<span class="text-gray-500 mt-1 block">则对应的.md访问地址：</span>
+<span class="text-white/58">当前博客的访问地址：</span><br/>https://www.baklib.com/blog/llm-website-visibility<br/>
+<span class="text-white/58 mt-1 block">则对应的.md访问地址：</span>
 <span class="text-blue-400">https://www.baklib.com/blog/llm-website-visibility.md</span>`,
 
     chapter4_badge: `技能 3`,
     chapter4_h2: `主动递名片 <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-3xl font-mono mt-2 block tracking-normal">&lt;link&gt; & HTTP Link</span>`,
     chapter4_p: `在 HTML 的 <code class="text-white/80">&lt;head&gt;</code> 以及 HTTP 的 <code class="text-white/80">Link</code> 头中宣告 <code class="text-white/80">.md</code> 的存在，告诉机器另一种读取方式。`,
-    chapter4_tip: `<span class="text-gray-500">示例：</span>
+    chapter4_tip: `<span class="text-white/58">示例：</span>
 <span class="text-purple-400">&lt;link</span>
  <span class="text-blue-400">rel</span>="<span class="text-teal-400">alternate</span>"
  <span class="text-blue-400">type</span>="<span class="text-teal-400">text/markdown</span>"
@@ -34,7 +34,7 @@ export const translations = {
     chapter5_badge: `技能 4`,
     chapter5_h2: `写给人类的备注 <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-3xl font-mono mt-2 block tracking-normal">sr-only 视觉隐藏</span>`,
     chapter5_p: `当人把 URL 贴进对话框时，在 DOM 中加入视觉隐藏的地址提示。你可以查看 www.baklib.com 下每篇文章的源代码，会发现如下提示：`,
-    chapter5_tip: `<span class="text-gray-500">示例：</span>
+    chapter5_tip: `<span class="text-white/58">示例：</span>
 <span class="text-purple-400">&lt;div</span> <span class="text-blue-400">class</span>="<span class="text-teal-400 break-all whitespace-normal">absolute w-px h-px p-0 overflow-hidden whitespace-nowrap</span>" <span class="text-blue-400">aria-hidden</span>="<span class="text-teal-400">true</span>"<span class="text-purple-400">&gt;</span>
   A Markdown version of this page is
   available at {{ page.url }}.md
@@ -101,14 +101,14 @@ export const translations = {
     chapter3_h2: `Double-Sided Printing <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-3xl font-mono mt-2 block tracking-normal">.md Routes</span>`,
     chapter3_p: `Add <code class="text-white/80">.md</code> to the same URL. This solves the "information density" problem, reducing context load for models.`,
     chapter3_tip: `<span class="text-purple-400">Example:</span><br/>
-<span class="text-gray-500">Current blog URL:</span><br/>https://www.baklib.com/blog/llm-website-visibility<br/>
-<span class="text-gray-500 mt-1 block">Corresponding .md URL:</span>
+<span class="text-white/58">Current blog URL:</span><br/>https://www.baklib.com/blog/llm-website-visibility<br/>
+<span class="text-white/58 mt-1 block">Corresponding .md URL:</span>
 <span class="text-blue-400">https://www.baklib.com/blog/llm-website-visibility.md</span>`,
 
     chapter4_badge: `Skill 3`,
     chapter4_h2: `Hand Out Business Cards <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-3xl font-mono mt-2 block tracking-normal">&lt;link&gt; & HTTP Link</span>`,
     chapter4_p: `Declare the existence of <code class="text-white/80">.md</code> in the HTML <code class="text-white/80">&lt;head&gt;</code> and HTTP <code class="text-white/80">Link</code> headers to tell machines about an alternative reading method.`,
-    chapter4_tip: `<span class="text-gray-500">Example:</span>
+    chapter4_tip: `<span class="text-white/58">Example:</span>
 <span class="text-purple-400">&lt;link</span>
  <span class="text-blue-400">rel</span>="<span class="text-teal-400">alternate</span>"
  <span class="text-blue-400">type</span>="<span class="text-teal-400">text/markdown</span>"
@@ -119,7 +119,7 @@ export const translations = {
     chapter5_badge: `Skill 4`,
     chapter5_h2: `Notes for Humans <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-3xl font-mono mt-2 block tracking-normal">sr-only Visual Hiding</span>`,
     chapter5_p: `When users copy-paste URLs into chat interfaces, include visually hidden hints in the DOM. Check the source code of any post on www.baklib.com to see this hint:`,
-    chapter5_tip: `<span class="text-gray-500">Example:</span>
+    chapter5_tip: `<span class="text-white/58">Example:</span>
 <span class="text-purple-400">&lt;div</span> <span class="text-blue-400">class</span>="<span class="text-teal-400 break-all whitespace-normal">absolute w-px h-px p-0 overflow-hidden whitespace-nowrap</span>" <span class="text-blue-400">aria-hidden</span>="<span class="text-teal-400">true</span>"<span class="text-purple-400">&gt;</span>
   A Markdown version of this page is
   available at {{ page.url }}.md

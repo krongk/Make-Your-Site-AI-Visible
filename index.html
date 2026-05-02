@@ -4,15 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>如何让网站对大模型可见</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
   </head>
-  <body class="bg-[#050505] flex justify-center min-h-screen font-sans antialiased text-white">
-    <!-- Outer Glow Background -->
-    <div class="fixed inset-0 bg-[radial-gradient(circle_at_50%_0%,_#221155_0%,_transparent_50%),radial-gradient(circle_at_10%_100%,_#441122_0%,_transparent_40%)] opacity-40 pointer-events-none z-0"></div>
+  <body class="flex min-h-screen justify-center bg-black font-sans antialiased text-white">
+    <!-- Outer ambient：近黑底 + 轻量品牌色光晕 -->
+    <div class="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(ellipse_120%_80%_at_50%_-20%,_rgba(13,148,136,0.18)_0%,_transparent_55%),radial-gradient(ellipse_100%_60%_at_100%_100%,_rgba(234,88,12,0.06)_0%,_transparent_45%),radial-gradient(circle_at_50%_50%,_#030303_0%,_#000_100%)]"></div>
 
     <!-- Main Mobile Container -->
     <main 
       id="app" 
-      class="w-full max-w-[420px] h-[100dvh] bg-[#0c0c0c] border-x border-[#1a1a1a] relative overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.8),0_0_20px_rgba(100,50,255,0.2)] flex flex-col z-10"
+      class="relative z-10 flex h-[100dvh] w-full max-w-[420px] flex-col overflow-hidden border-x border-white/[0.08] bg-[#0a0a0a] shadow-[0_0_100px_rgba(0,0,0,0.9),0_0_40px_rgba(13,148,136,0.12),inset_0_1px_0_rgba(255,255,255,0.05)]"
       x-data="appData"
     >
       <!-- Scrollable Content -->
@@ -22,18 +25,18 @@
         x-ref="scrollContainer"
       >
         <!-- Chapter 0: Title Video -->
-        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0c0c0c] p-6 overflow-hidden">
+        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0a0a0a] p-6 overflow-hidden">
           <div class="absolute inset-0 z-0">
-            <video class="w-full h-full object-cover opacity-20" src="https://storage.googleapis.com/aistudio-yeti-dev-public/01JMNTBYSSG86T713XXG81J1F1.mp4" autoplay loop muted playsinline></video>
-            <div class="absolute inset-0 bg-gradient-to-b from-[#0c0c0c]/80 to-[#0c0c0c]"></div>
+            <video class="w-full h-full object-cover opacity-20" src="./src/assets/video-ai-visible.mp4" autoplay loop muted playsinline poster="./src/assets/SV-S39-M1-shot1.png"></video>
+            <div class="absolute inset-0 bg-gradient-to-b from-black/85 via-[#0a0a0a]/80 to-[#0a0a0a]"></div>
           </div>
           
           <div class="z-10 flex flex-col items-center justify-center text-center space-y-6" x-intersect.threshold.0.5="activeChapter = 0">
-            <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(88,28,135,0.4)] mb-4 border border-white/10 bg-[#151515]"
+            <div class="relative w-full aspect-video rounded-2xl overflow-hidden shadow-[0_12px_44px_rgba(13,148,136,0.22)] mb-4 border border-white/10 bg-black/70"
                  x-intersect:enter="animateElement($el, 'fade-up')"
                  x-intersect:leave="resetElement($el, 'fade-up')"
                  class="opacity-0 translate-y-8 transition-all duration-700 ease-out">
-              <video class="w-full h-full object-cover" src="https://storage.googleapis.com/aistudio-yeti-dev-public/01JMNTBYSSG86T713XXG81J1F1.mp4" autoplay loop muted playsinline></video>
+              <video class="w-full h-full object-cover" src="./src/assets/video-hero.mp4" autoplay loop muted playsinline poster="./src/assets/SV-S39-M1-shot2.png"></video>
             </div>
             
             <h1 class="text-4xl sm:text-5xl font-black leading-tight italic tracking-tighter"
@@ -41,10 +44,10 @@
                 x-intersect:leave="resetElement($el, 'fade-up')"
                 class="opacity-0 translate-y-8 transition-all duration-700 ease-out"
                 x-html="t('chapter0_h1')">
-              如何让网站<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">对大模型可见</span>
+              如何让网站<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0D9488] to-[#14b8a6]">对大模型可见</span>
             </h1>
             
-            <p class="text-gray-400 text-lg font-light leading-relaxed"
+            <p class="text-white/88 text-lg font-light leading-relaxed"
                x-intersect:enter="animateElement($el, 'fade-up', 400)"
                x-intersect:leave="resetElement($el, 'fade-up')"
                class="opacity-0 translate-y-8 transition-all duration-700 ease-out"
@@ -52,7 +55,7 @@
                用户不再搜索，而是提问。<br/>你的网站准备好迎接<br/>AI读者了吗？
             </p>
             
-            <div class="absolute bottom-10 animate-bounce text-purple-400">
+            <div class="absolute bottom-10 animate-bounce text-teal-400">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
@@ -61,14 +64,14 @@
         </section>
 
         <!-- Chapter 1: 别把门关上 -->
-        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0c0c0c] text-white p-6">
-           <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_#221144_0%,_transparent_70%)] opacity-30 z-0 pointer-events-none"></div>
+        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0a0a0a] text-white p-6">
+           <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(13,148,136,0.2)_0%,_transparent_70%)] opacity-30 z-0 pointer-events-none"></div>
            <div class="z-10 flex flex-col items-start w-full space-y-6" x-intersect.threshold.0.5="activeChapter = 1">
-              <div class="inline-flex items-center space-x-2 bg-purple-500/20 border border-purple-500/30 px-3 py-1 rounded text-[10px] font-bold text-purple-300 uppercase tracking-widest"
+              <div class="inline-flex items-center space-x-2 rounded-full border border-teal-400/35 bg-teal-500/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-teal-100"
                    x-intersect:enter="animateElement($el, 'slide-right')"
                    x-intersect:leave="resetElement($el, 'slide-right')"
                    class="opacity-0 -translate-x-8 transition-all duration-700 ease-out">
-                <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                <span class="w-2 h-2 rounded-full bg-[#0D9488]"></span>
                 <span x-text="t('chapter1_badge')">第零步</span>
               </div>
               
@@ -77,39 +80,46 @@
                   x-intersect:leave="resetElement($el, 'slide-right')"
                   class="opacity-0 -translate-x-8 transition-all duration-700 ease-out"
                   x-html="t('chapter1_h2')">
-                别把门关上 <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-3xl font-mono mt-2 block">robots.txt</span>
+                别把门关上 <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0D9488] to-[#14b8a6] text-3xl font-mono mt-2 block">robots.txt</span>
               </h2>
               
-              <p class="text-gray-400 text-lg font-light leading-relaxed"
+              <p class="text-white/88 text-lg font-light leading-relaxed"
                  x-intersect:enter="animateElement($el, 'slide-right', 400)"
                  x-intersect:leave="resetElement($el, 'slide-right')"
                  class="opacity-0 -translate-x-8 transition-all duration-700 ease-out"
                  x-text="t('chapter1_p')">
                  如果你已经把 GPTBot、ClaudeBot 一类爬虫挡在门外，后面做得再漂亮，也没有入口。
               </p>
+
+              <div class="w-full flex justify-center items-center py-4 px-6 glass-panel rounded-2xl border border-teal-950/20 shadow-[0_10px_40px_rgba(13,148,136,0.16)] max-h-[min(20vh,160px)] shrink-0"
+                   x-intersect:enter="animateElement($el, 'scale-up', 500)"
+                   x-intersect:leave="resetElement($el, 'scale-up')"
+                   class="opacity-0 scale-95 transition-all duration-700 ease-out">
+                <img src="./src/assets/feature-net.svg" alt="" class="max-h-[min(16vh,120px)] w-full max-w-[280px] object-contain" loading="lazy" width="280" height="120" />
+              </div>
               
               <!-- Code block mock -->
-              <div class="w-full bg-white/5 rounded-[12px] p-4 shadow-[0_10px_40px_rgba(88,28,135,0.2)] border-[1.555556px] border-white/10 opacity-0 scale-95 transition-all duration-700 ease-out"
+              <div class="glass-panel w-full rounded-[12px] p-4 shadow-[0_10px_40px_rgba(13,148,136,0.16)] border-[1.555556px] border-white/10 opacity-0 scale-95 transition-all duration-700 ease-out"
                    x-intersect:enter="animateElement($el, 'scale-up', 600)"
                    x-intersect:leave="resetElement($el, 'scale-up')">
-                <pre class="text-sm font-mono text-gray-300">
-<span class="text-purple-400">User-agent:</span> GPTBot
-<span class="text-blue-400">Allow:</span> /
+                <pre class="text-sm font-mono text-white/92">
+<span class="text-teal-400">User-agent:</span> GPTBot
+<span class="text-teal-300">Allow:</span> /
 
-<span class="text-purple-400">User-agent:</span> ClaudeBot
-<span class="text-blue-400">Allow:</span> /</pre>
+<span class="text-teal-400">User-agent:</span> ClaudeBot
+<span class="text-teal-300">Allow:</span> /</pre>
               </div>
            </div>
         </section>
 
         <!-- Chapter 2: /llms.txt -->
-        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0c0c0c] text-white p-6">
+        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0a0a0a] text-white p-6">
            <div class="z-10 flex flex-col items-start w-full space-y-6" x-intersect.threshold.0.5="activeChapter = 2">
-              <div class="inline-flex items-center space-x-2 bg-purple-500/20 border border-purple-500/30 px-3 py-1 rounded text-[10px] font-bold text-purple-300 uppercase tracking-widest"
+              <div class="inline-flex items-center space-x-2 rounded-full border border-teal-400/35 bg-teal-500/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-teal-100"
                    x-intersect:enter="animateElement($el, 'slide-left')"
                    x-intersect:leave="resetElement($el, 'slide-left')"
                    class="opacity-0 translate-x-8 transition-all duration-700 ease-out">
-                <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                <span class="w-2 h-2 rounded-full bg-[#ea580c]"></span>
                 <span x-text="t('chapter2_badge')">技能 1</span>
               </div>
               
@@ -118,10 +128,10 @@
                   x-intersect:leave="resetElement($el, 'slide-left')"
                   class="opacity-0 translate-x-8 transition-all duration-700 ease-out"
                   x-html="t('chapter2_h2')">
-                给 AI 的站点地图 <br/> <span class="text-blue-400 text-3xl font-mono mt-2 block">/llms.txt</span>
+                给 AI 的站点地图 <br/> <span class="text-teal-300 text-3xl font-mono mt-2 block">/llms.txt</span>
               </h2>
               
-              <p class="text-gray-400 text-lg font-light leading-relaxed"
+              <p class="text-white/88 text-lg font-light leading-relaxed"
                  x-intersect:enter="animateElement($el, 'slide-left', 400)"
                  x-intersect:leave="resetElement($el, 'slide-left')"
                  class="opacity-0 translate-x-8 transition-all duration-700 ease-out"
@@ -129,30 +139,37 @@
                  用 Markdown 列出“你希望 AI 优先读的关键页面”。可以把它当作对话时代的 README。
               </p>
 
-              <div class="w-full bg-white/5 rounded-[12px] p-4 shadow-[0_10px_40px_rgba(88,28,135,0.2)] border-[1.555556px] border-white/10 opacity-0 scale-95 transition-all duration-700 ease-out"
+              <div class="glass-panel w-full rounded-[12px] p-4 shadow-[0_10px_40px_rgba(13,148,136,0.16)] border-[1.555556px] border-white/10 opacity-0 scale-95 transition-all duration-700 ease-out"
                    x-intersect:enter="animateElement($el, 'scale-up', 600)"
                    x-intersect:leave="resetElement($el, 'scale-up')">
-                <p class="text-xs font-mono text-gray-300 break-all" x-html="t('chapter2_tip')"><span class="text-purple-400">示例：</span><br/>https://www.baklib.com/llms.txt</p>
+                <p class="text-xs font-mono text-white/92 break-all" x-html="t('chapter2_tip')"><span class="text-teal-400">示例：</span><br/>https://www.baklib.com/llms.txt</p>
               </div>
 
-              <div class="w-full relative aspect-video rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(88,28,135,0.2)] border border-white/10 bg-[#151515]"
+              <div class="w-full flex justify-center items-center py-3 px-4 glass-panel rounded-2xl border border-teal-950/20 max-h-[min(18vh,140px)] shrink-0"
+                   x-intersect:enter="animateElement($el, 'slide-left', 550)"
+                   x-intersect:leave="resetElement($el, 'slide-left')"
+                   class="opacity-0 translate-x-8 transition-all duration-700 ease-out">
+                <img src="./src/assets/feature-search.svg" alt="" class="max-h-[min(14vh,100px)] w-full max-w-[260px] object-contain" loading="lazy" width="260" height="100" />
+              </div>
+
+              <div class="w-full relative aspect-video rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(13,148,136,0.16)] border border-white/10 bg-black/70"
                    x-intersect:enter="animateElement($el, 'scale-up', 600)"
                    x-intersect:leave="resetElement($el, 'scale-up')"
                    class="opacity-0 scale-95 transition-all duration-700 ease-out">
-                <video class="w-full h-full object-cover" src="https://storage.googleapis.com/aistudio-yeti-dev-public/01JMNTBYTVK93B6MWN1W1RFWBE.mp4" autoplay loop muted playsinline></video>
+                <video class="w-full h-full object-cover" src="./src/assets/video-ai-visible.mp4" autoplay loop muted playsinline poster="./src/assets/SV-S39-M1-shot3.png"></video>
               </div>
            </div>
         </section>
 
         <!-- Chapter 3: 同址 .md -->
-        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0c0c0c] text-white p-6 overflow-hidden">
-          <div class="absolute inset-0 bg-[radial-gradient(circle_at_0%_100%,_#221155_0%,_transparent_50%)] opacity-30 z-0"></div>
+        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0a0a0a] text-white p-6 overflow-hidden">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_0%_100%,_rgba(13,148,136,0.18)_0%,_transparent_52%)] opacity-30 z-0"></div>
            <div class="z-10 flex flex-col items-start w-full space-y-6" x-intersect.threshold.0.5="activeChapter = 3">
-              <div class="inline-flex items-center space-x-2 bg-purple-500/20 border border-purple-500/30 px-3 py-1 rounded text-[10px] font-bold text-purple-300 uppercase tracking-widest"
+              <div class="inline-flex items-center space-x-2 rounded-full border border-teal-400/35 bg-teal-500/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-teal-100"
                    x-intersect:enter="animateElement($el, 'slide-right')"
                    x-intersect:leave="resetElement($el, 'slide-right')"
                    class="opacity-0 -translate-x-8 transition-all duration-700 ease-out">
-                <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                <span class="w-2 h-2 rounded-full bg-[#0D9488]"></span>
                 <span x-text="t('chapter3_badge')">技能 2</span>
               </div>
               
@@ -161,45 +178,52 @@
                   x-intersect:leave="resetElement($el, 'slide-right')"
                   class="opacity-0 -translate-x-8 transition-all duration-700 ease-out"
                   x-html="t('chapter3_h2')">
-                干净的落点 <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-3xl font-mono mt-2 block">同址 .md</span>
+                干净的落点 <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0D9488] to-[#14b8a6] text-3xl font-mono mt-2 block">同址 .md</span>
               </h2>
               
-              <p class="text-gray-400 text-lg font-light leading-relaxed"
+              <p class="text-white/88 text-lg font-light leading-relaxed"
                  x-intersect:enter="animateElement($el, 'slide-right', 400)"
                  x-intersect:leave="resetElement($el, 'slide-right')"
                  class="opacity-0 -translate-x-8 transition-all duration-700 ease-out"
                  x-html="t('chapter3_p')">
-                 同一地址加上 <code class="text-white/80">.md</code>。解决“信息密度”的问题，让模型的上下文压力小很多。
+                 同一地址加上 <code class="text-white/95">.md</code>。解决“信息密度”的问题，让模型的上下文压力小很多。
               </p>
 
-              <div class="w-full bg-white/5 rounded-[12px] p-4 shadow-[0_10px_40px_rgba(88,28,135,0.2)] border-[1.555556px] border-white/10 opacity-0 flip-in transition-all duration-700 ease-out"
+              <div class="glass-panel w-full rounded-[12px] p-4 shadow-[0_10px_40px_rgba(13,148,136,0.16)] border-[1.555556px] border-white/10 opacity-0 flip-in transition-all duration-700 ease-out"
                    x-intersect:enter="animateElement($el, 'flip-in', 600)"
                    x-intersect:leave="resetElement($el, 'flip-in')">
-                <p class="text-[11px] font-mono text-gray-300 break-all space-y-2" x-html="t('chapter3_tip')">
-                  <span class="text-purple-400">示例：</span><br/>
-                  <span class="text-gray-500">当前博客的访问地址：</span><br/>https://www.baklib.com/blog/llm-website-visibility<br/>
-                  <span class="text-gray-500 mt-1 block">则对应的.md访问地址：</span>
-                  <span class="text-blue-400">https://www.baklib.com/blog/llm-website-visibility.md</span>
+                <p class="text-[11px] font-mono text-white/92 break-all space-y-2" x-html="t('chapter3_tip')">
+                  <span class="text-teal-400">示例：</span><br/>
+                  <span class="text-white/58">当前博客的访问地址：</span><br/>https://www.baklib.com/blog/llm-website-visibility<br/>
+                  <span class="text-white/58 mt-1 block">则对应的.md访问地址：</span>
+                  <span class="text-teal-300">https://www.baklib.com/blog/llm-website-visibility.md</span>
                 </p>
               </div>
 
-              <div class="w-full relative aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(88,28,135,0.2)] border border-white/10"
+              <div class="w-full flex justify-center items-center py-3 px-4 glass-panel rounded-2xl border border-teal-950/20 max-h-[min(18vh,130px)] shrink-0"
+                   x-intersect:enter="animateElement($el, 'flip-in', 550)"
+                   x-intersect:leave="resetElement($el, 'flip-in')"
+                   class="opacity-0 rotate-y-90 transition-all duration-700 ease-out" style="perspective: 1000px;">
+                <img src="./src/assets/Content-Classification1.svg" alt="" class="max-h-[min(14vh,100px)] w-full max-w-[260px] object-contain" loading="lazy" width="260" height="100" />
+              </div>
+
+              <div class="w-full relative aspect-[4/3] rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(13,148,136,0.16)] border border-white/10"
                    x-intersect:enter="animateElement($el, 'flip-in', 600)"
                    x-intersect:leave="resetElement($el, 'flip-in')"
                    class="opacity-0 rotate-y-90 transition-all duration-700 ease-out" style="perspective: 1000px;">
-                <video class="w-full h-full object-cover" src="https://storage.googleapis.com/aistudio-yeti-dev-public/01JMNTBYVQJMP1481H5DPT0EMG.mp4" autoplay loop muted playsinline></video>
+                <video class="w-full h-full object-cover" src="./src/assets/video-add-md-style.mp4" autoplay loop muted playsinline poster="./src/assets/SV-S39-M2-shot1.png"></video>
               </div>
            </div>
         </section>
 
         <!-- Chapter 4: <link> & HTTP Link -->
-        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0c0c0c] text-white p-6">
+        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0a0a0a] text-white p-6">
            <div class="z-10 flex flex-col items-start w-full space-y-6" x-intersect.threshold.0.5="activeChapter = 4">
-              <div class="inline-flex items-center space-x-2 bg-purple-500/20 border border-purple-500/30 px-3 py-1 rounded text-[10px] font-bold text-purple-300 uppercase tracking-widest"
+              <div class="inline-flex items-center space-x-2 rounded-full border border-teal-400/35 bg-teal-500/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-teal-100"
                    x-intersect:enter="animateElement($el, 'fade-up')"
                    x-intersect:leave="resetElement($el, 'fade-up')"
                    class="opacity-0 translate-y-8 transition-all duration-700 ease-out">
-                <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                <span class="w-2 h-2 rounded-full bg-[#ea580c]"></span>
                 <span x-text="t('chapter4_badge')">技能 3</span>
               </div>
               
@@ -208,40 +232,47 @@
                   x-intersect:leave="resetElement($el, 'fade-up')"
                   class="opacity-0 translate-y-8 transition-all duration-700 ease-out"
                   x-html="t('chapter4_h2')">
-                双轨宣告 <br/> <span class="text-blue-400 text-xl font-mono block mt-2 text-wrap break-all tracking-normal">&lt;link rel="alternate"&gt;</span>
+                双轨宣告 <br/> <span class="text-teal-300 text-xl font-mono block mt-2 text-wrap break-all tracking-normal">&lt;link rel="alternate"&gt;</span>
               </h2>
               
-              <p class="text-gray-400 text-lg font-light leading-relaxed"
+              <p class="text-white/88 text-lg font-light leading-relaxed"
                  x-intersect:enter="animateElement($el, 'fade-up', 400)"
                  x-intersect:leave="resetElement($el, 'fade-up')"
                  class="opacity-0 translate-y-8 transition-all duration-700 ease-out"
                  x-html="t('chapter4_p')">
-                 在 HTML 的 <code class="text-white/80">&lt;head&gt;</code> 以及 HTTP 的 <code class="text-white/80">Link</code> 头中宣告 <code class="text-white/80">.md</code> 的存在，告诉机器另一种读取方式。
+                 在 HTML 的 <code class="text-white/95">&lt;head&gt;</code> 以及 HTTP 的 <code class="text-white/95">Link</code> 头中宣告 <code class="text-white/95">.md</code> 的存在，告诉机器另一种读取方式。
               </p>
 
-              <div class="w-full bg-white/5 rounded-[12px] p-4 shadow-[0_10px_40px_rgba(88,28,135,0.2)] border-[1.555556px] border-white/10 opacity-0 translate-y-8 transition-all duration-700 ease-out"
+              <div class="glass-panel w-full rounded-[12px] p-4 shadow-[0_10px_40px_rgba(13,148,136,0.16)] border-[1.555556px] border-white/10 opacity-0 translate-y-8 transition-all duration-700 ease-out"
                    x-intersect:enter="animateElement($el, 'fade-up', 600)"
                    x-intersect:leave="resetElement($el, 'fade-up')">
-                <pre class="text-[11px] font-mono text-gray-300 whitespace-pre-wrap leading-relaxed" x-html="t('chapter4_tip')"><span class="text-gray-500">示例：</span>
-<span class="text-purple-400">&lt;link</span>
- <span class="text-blue-400">rel</span>="<span class="text-teal-400">alternate</span>"
- <span class="text-blue-400">type</span>="<span class="text-teal-400">text/markdown</span>"
- <span class="text-blue-400">title</span>="<span class="text-teal-400">Markdown version</span>"
- <span class="text-blue-400">href</span>="<span class="text-teal-400">/blog/my-post.md</span>"
-<span class="text-purple-400">/&gt;</span></pre>
+                <pre class="text-[11px] font-mono text-white/92 whitespace-pre-wrap leading-relaxed" x-html="t('chapter4_tip')"><span class="text-white/58">示例：</span>
+<span class="text-teal-400">&lt;link</span>
+ <span class="text-teal-300">rel</span>="<span class="text-teal-400">alternate</span>"
+ <span class="text-teal-300">type</span>="<span class="text-teal-400">text/markdown</span>"
+ <span class="text-teal-300">title</span>="<span class="text-teal-400">Markdown version</span>"
+ <span class="text-teal-300">href</span>="<span class="text-teal-400">/blog/my-post.md</span>"
+<span class="text-teal-400">/&gt;</span></pre>
+              </div>
+
+              <div class="w-full flex justify-center items-center py-4 px-6 glass-panel rounded-2xl border border-teal-950/20 max-h-[min(20vh,150px)] shrink-0"
+                   x-intersect:enter="animateElement($el, 'fade-up', 700)"
+                   x-intersect:leave="resetElement($el, 'fade-up')"
+                   class="opacity-0 translate-y-8 transition-all duration-700 ease-out">
+                <img src="./src/assets/feature-intgration.svg" alt="" class="max-h-[min(15vh,110px)] w-full max-w-[280px] object-contain" loading="lazy" width="280" height="110" />
               </div>
            </div>
          </section>
 
         <!-- Chapter 5: 视觉隐藏提示 -->
-        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0c0c0c] text-white p-6">
-           <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_#221155_0%,_transparent_50%)] opacity-30 z-0 pointer-events-none"></div>
+        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0a0a0a] text-white p-6">
+           <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(13,148,136,0.16)_0%,_transparent_50%)] opacity-30 z-0 pointer-events-none"></div>
            <div class="z-10 flex flex-col items-start w-full space-y-6" x-intersect.threshold.0.5="activeChapter = 5">
-              <div class="inline-flex items-center space-x-2 bg-purple-500/20 border border-purple-500/30 px-3 py-1 rounded text-[10px] font-bold text-purple-300 uppercase tracking-widest"
+              <div class="inline-flex items-center space-x-2 rounded-full border border-teal-400/35 bg-teal-500/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-teal-100"
                    x-intersect:enter="animateElement($el, 'slide-right')"
                    x-intersect:leave="resetElement($el, 'slide-right')"
                    class="opacity-0 -translate-x-8 transition-all duration-700 ease-out">
-                <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                <span class="w-2 h-2 rounded-full bg-[#0D9488]"></span>
                 <span x-text="t('chapter5_badge')">技能 4</span>
               </div>
               
@@ -250,10 +281,10 @@
                   x-intersect:leave="resetElement($el, 'slide-right')"
                   class="opacity-0 -translate-x-8 transition-all duration-700 ease-out"
                   x-html="t('chapter5_h2')">
-                对话式使用的路标 <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-3xl font-mono mt-2 block tracking-normal">视觉隐藏提示</span>
+                对话式使用的路标 <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0D9488] to-[#14b8a6] text-3xl font-mono mt-2 block tracking-normal">视觉隐藏提示</span>
               </h2>
               
-              <p class="text-gray-400 text-lg font-light leading-relaxed"
+              <p class="text-white/88 text-lg font-light leading-relaxed"
                  x-intersect:enter="animateElement($el, 'slide-right', 400)"
                  x-intersect:leave="resetElement($el, 'slide-right')"
                  class="opacity-0 -translate-x-8 transition-all duration-700 ease-out"
@@ -262,28 +293,35 @@
               </p>
 
               <!-- Code block mock -->
-              <div class="w-full bg-white/5 rounded-[12px] p-4 shadow-[0_10px_40px_rgba(88,28,135,0.2)] border-[1.555556px] border-white/10 opacity-0 scale-95 transition-all duration-700 ease-out"
+              <div class="glass-panel w-full rounded-[12px] p-4 shadow-[0_10px_40px_rgba(13,148,136,0.16)] border-[1.555556px] border-white/10 opacity-0 scale-95 transition-all duration-700 ease-out"
                    x-intersect:enter="animateElement($el, 'scale-up', 600)"
                    x-intersect:leave="resetElement($el, 'scale-up')">
-                <pre class="text-[11px] font-mono text-gray-300 whitespace-pre-wrap leading-relaxed" x-html="t('chapter5_tip')"><span class="text-gray-500">示例：</span>
-<span class="text-purple-400">&lt;div</span> <span class="text-blue-400">class</span>="<span class="text-teal-400 break-all whitespace-normal">absolute w-px h-px p-0 overflow-hidden whitespace-nowrap</span>" <span class="text-blue-400">aria-hidden</span>="<span class="text-teal-400">true</span>"<span class="text-purple-400">&gt;</span>
+                <pre class="text-[11px] font-mono text-white/92 whitespace-pre-wrap leading-relaxed" x-html="t('chapter5_tip')"><span class="text-white/58">示例：</span>
+<span class="text-teal-400">&lt;div</span> <span class="text-teal-300">class</span>="<span class="text-teal-400 break-all whitespace-normal">absolute w-px h-px p-0 overflow-hidden whitespace-nowrap</span>" <span class="text-teal-300">aria-hidden</span>="<span class="text-teal-400">true</span>"<span class="text-teal-400">&gt;</span>
   A Markdown version of this page is
   available at {{ page.url }}.md
   — optimized for AI and LLM tools.
-<span class="text-purple-400">&lt;/div&gt;</span></pre>
+<span class="text-teal-400">&lt;/div&gt;</span></pre>
+              </div>
+
+              <div class="w-full flex justify-center items-center py-4 px-6 glass-panel rounded-2xl border border-teal-950/20 max-h-[min(20vh,150px)] shrink-0"
+                   x-intersect:enter="animateElement($el, 'scale-up', 700)"
+                   x-intersect:leave="resetElement($el, 'scale-up')"
+                   class="opacity-0 scale-95 transition-all duration-700 ease-out">
+                <img src="./src/assets/Content-Tagging6.svg" alt="" class="max-h-[min(15vh,110px)] w-full max-w-[280px] object-contain" loading="lazy" width="280" height="110" />
               </div>
            </div>
         </section>
 
         <!-- Chapter 6: /llms-full.txt -->
-        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0c0c0c] text-white p-6">
-           <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_#221155_0%,_transparent_50%)] opacity-30 z-0 pointer-events-none"></div>
+        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0a0a0a] text-white p-6">
+           <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(45,212,191,0.12)_0%,_transparent_52%)] opacity-30 z-0 pointer-events-none"></div>
            <div class="z-10 flex flex-col items-start w-full space-y-6" x-intersect.threshold.0.5="activeChapter = 6">
-              <div class="inline-flex items-center space-x-2 bg-purple-500/20 border border-purple-500/30 px-3 py-1 rounded text-[10px] font-bold text-purple-300 uppercase tracking-widest"
+              <div class="inline-flex items-center space-x-2 rounded-full border border-teal-400/35 bg-teal-500/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-teal-100"
                    x-intersect:enter="animateElement($el, 'fade-up')"
                    x-intersect:leave="resetElement($el, 'fade-up')"
                    class="opacity-0 translate-y-8 transition-all duration-700 ease-out">
-                <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                <span class="w-2 h-2 rounded-full bg-[#ea580c]"></span>
                 <span x-text="t('chapter6_badge')">技能 5</span>
               </div>
               
@@ -292,34 +330,41 @@
                   x-intersect:leave="resetElement($el, 'fade-up')"
                   class="opacity-0 translate-y-8 transition-all duration-700 ease-out"
                   x-html="t('chapter6_h2')">
-                打包更完整正文 <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-3xl font-mono mt-2 block tracking-normal">/llms-full.txt</span>
+                打包更完整正文 <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0D9488] to-[#14b8a6] text-3xl font-mono mt-2 block tracking-normal">/llms-full.txt</span>
               </h2>
               
-              <p class="text-gray-400 text-lg font-light leading-relaxed"
+              <p class="text-white/88 text-lg font-light leading-relaxed"
                  x-intersect:enter="animateElement($el, 'fade-up', 400)"
                  x-intersect:leave="resetElement($el, 'fade-up')"
                  class="opacity-0 translate-y-8 transition-all duration-700 ease-out"
                  x-html="t('chapter6_p')">
-                 和 <code class="text-white/80">llms.txt</code> 的关系，类似“目录”和“全集”。前者给你指路，后者把更多内容一次性打包。更适合文档站。
+                 和 <code class="text-white/95">llms.txt</code> 的关系，类似“目录”和“全集”。前者给你指路，后者把更多内容一次性打包。更适合文档站。
               </p>
 
-              <div class="w-full bg-white/5 rounded-[12px] p-4 shadow-[0_10px_40px_rgba(88,28,135,0.2)] border-[1.555556px] border-white/10 opacity-0 translate-y-8 transition-all duration-700 ease-out"
+              <div class="glass-panel w-full rounded-[12px] p-4 shadow-[0_10px_40px_rgba(13,148,136,0.16)] border-[1.555556px] border-white/10 opacity-0 translate-y-8 transition-all duration-700 ease-out"
                    x-intersect:enter="animateElement($el, 'fade-up', 600)"
                    x-intersect:leave="resetElement($el, 'fade-up')">
-                <p class="text-xs font-mono text-gray-300 break-all" x-html="t('chapter6_tip')"><span class="text-purple-400">示例：</span><br/>见链接： <a href="https://www.baklib.com/llms-full.txt" target="_blank" class="text-blue-400 underline">https://www.baklib.com/llms-full.txt</a></p>
+                <p class="text-xs font-mono text-white/92 break-all" x-html="t('chapter6_tip')"><span class="text-teal-400">示例：</span><br/>见链接： <a href="https://www.baklib.com/llms-full.txt" target="_blank" class="text-teal-300 underline">https://www.baklib.com/llms-full.txt</a></p>
+              </div>
+
+              <div class="w-full flex justify-center items-center py-4 px-6 glass-panel rounded-2xl border border-teal-950/20 max-h-[min(20vh,150px)] shrink-0"
+                   x-intersect:enter="animateElement($el, 'fade-up', 700)"
+                   x-intersect:leave="resetElement($el, 'fade-up')"
+                   class="opacity-0 translate-y-8 transition-all duration-700 ease-out">
+                <img src="./src/assets/feature-dxp.svg" alt="" class="max-h-[min(15vh,110px)] w-full max-w-[280px] object-contain" loading="lazy" width="280" height="110" />
               </div>
            </div>
         </section>
 
         <!-- Chapter 7: Accept: text/markdown -->
-        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0c0c0c] text-white p-6">
-           <div class="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,_#441122_0%,_transparent_40%)] opacity-30 z-0 pointer-events-none"></div>
+        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0a0a0a] text-white p-6">
+           <div class="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,_rgba(234,88,12,0.12)_0%,_transparent_42%)] opacity-30 z-0 pointer-events-none"></div>
            <div class="z-10 flex flex-col items-start w-full space-y-6" x-intersect.threshold.0.5="activeChapter = 7">
-              <div class="inline-flex items-center space-x-2 bg-purple-500/20 border border-purple-500/30 px-3 py-1 rounded text-[10px] font-bold text-purple-300 uppercase tracking-widest"
+              <div class="inline-flex items-center space-x-2 rounded-full border border-teal-400/35 bg-teal-500/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-teal-100"
                    x-intersect:enter="animateElement($el, 'scale-up')"
                    x-intersect:leave="resetElement($el, 'scale-up')"
                    class="opacity-0 scale-95 transition-all duration-700 ease-out">
-                <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                <span class="w-2 h-2 rounded-full bg-[#0D9488]"></span>
                 <span x-text="t('chapter7_badge')">技能 6</span>
               </div>
               
@@ -328,10 +373,10 @@
                   x-intersect:leave="resetElement($el, 'scale-up')"
                   class="opacity-0 scale-95 transition-all duration-700 ease-out"
                   x-html="t('chapter7_h2')">
-                HTTP 内容协商 <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-2xl font-mono block mt-2 tracking-normal">Accept: text/markdown</span>
+                HTTP 内容协商 <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0D9488] to-[#14b8a6] text-2xl font-mono block mt-2 tracking-normal">Accept: text/markdown</span>
               </h2>
               
-              <p class="text-gray-400 text-lg font-light leading-relaxed"
+              <p class="text-white/88 text-lg font-light leading-relaxed"
                  x-intersect:enter="animateElement($el, 'scale-up', 400)"
                  x-intersect:leave="resetElement($el, 'scale-up')"
                  class="opacity-0 scale-95 transition-all duration-700 ease-out"
@@ -339,30 +384,37 @@
                  同一信息，只是不同表示。用 HTTP 协议返回模型需要的高密度文本。
               </p>
 
-              <div class="w-full bg-white/5 rounded-[12px] p-4 shadow-[0_10px_40px_rgba(88,28,135,0.2)] border-[1.555556px] border-white/10 opacity-0 scale-95 transition-all duration-700 ease-out"
+              <div class="glass-panel w-full rounded-[12px] p-4 shadow-[0_10px_40px_rgba(13,148,136,0.16)] border-[1.555556px] border-white/10 opacity-0 scale-95 transition-all duration-700 ease-out"
                    x-intersect:enter="animateElement($el, 'scale-up', 600)"
                    x-intersect:leave="resetElement($el, 'scale-up')">
-                <p class="text-xs font-mono text-gray-300 break-all" x-html="t('chapter7_tip')"><span class="text-purple-400">示例代码：</span><br/>Accept: text/markdown, text/html;q=0.9</p>
+                <p class="text-xs font-mono text-white/92 break-all" x-html="t('chapter7_tip')"><span class="text-teal-400">示例代码：</span><br/>Accept: text/markdown, text/html;q=0.9</p>
               </div>
 
-              <div class="w-full relative aspect-square rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(88,28,135,0.2)] border border-white/10"
+              <div class="w-full flex justify-center items-center py-3 px-4 glass-panel rounded-2xl border border-teal-950/20 max-h-[min(16vh,120px)] shrink-0"
+                   x-intersect:enter="animateElement($el, 'scale-up', 550)"
+                   x-intersect:leave="resetElement($el, 'scale-up')"
+                   class="opacity-0 scale-95 transition-all duration-700 ease-out">
+                <img src="./src/assets/feature-graph.svg" alt="" class="max-h-[min(12vh,90px)] w-full max-w-[240px] object-contain" loading="lazy" width="240" height="90" />
+              </div>
+
+              <div class="w-full relative aspect-square rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(13,148,136,0.16)] border border-white/10"
                    x-intersect:enter="animateElement($el, 'fade-up', 600)"
                    x-intersect:leave="resetElement($el, 'fade-up')"
                    class="opacity-0 translate-y-8 transition-all duration-700 ease-out">
-                <video class="w-full h-full object-cover" src="https://storage.googleapis.com/aistudio-yeti-dev-public/01JMNTBYV8N1T6X2CTRYXW3E10.mp4" autoplay loop muted playsinline></video>
+                <video class="w-full h-full object-cover" src="./src/assets/video-hero.mp4" autoplay loop muted playsinline poster="./src/assets/SV-S39-M2-shot2.png"></video>
               </div>
            </div>
         </section>
 
         <!-- Chapter 8: 如何验证是否有效 -->
-        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0c0c0c] text-white p-6">
-           <div class="absolute inset-0 bg-[radial-gradient(circle_at_0%_100%,_#221155_0%,_transparent_50%)] opacity-30 z-0 pointer-events-none"></div>
+        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0a0a0a] text-white p-6">
+           <div class="absolute inset-0 bg-[radial-gradient(circle_at_0%_100%,_rgba(13,148,136,0.18)_0%,_transparent_52%)] opacity-30 z-0 pointer-events-none"></div>
            <div class="z-10 flex flex-col items-start w-full space-y-6" x-intersect.threshold.0.5="activeChapter = 8">
-              <div class="inline-flex items-center space-x-2 bg-purple-500/20 border border-purple-500/30 px-3 py-1 rounded text-[10px] font-bold text-purple-300 uppercase tracking-widest"
+              <div class="inline-flex items-center space-x-2 rounded-full border border-teal-400/35 bg-teal-500/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-teal-100"
                    x-intersect:enter="animateElement($el, 'slide-right')"
                    x-intersect:leave="resetElement($el, 'slide-right')"
                    class="opacity-0 -translate-x-8 transition-all duration-700 ease-out">
-                <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                <span class="w-2 h-2 rounded-full bg-[#ea580c]"></span>
                 <span x-text="t('chapter8_badge')">验证效果</span>
               </div>
               
@@ -371,37 +423,44 @@
                   x-intersect:leave="resetElement($el, 'slide-right')"
                   class="opacity-0 -translate-x-8 transition-all duration-700 ease-out"
                   x-html="t('chapter8_h2')">
-                不测就不知道 <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-3xl font-mono mt-2 block tracking-normal">服务端验证</span>
+                不测就不知道 <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0D9488] to-[#14b8a6] text-3xl font-mono mt-2 block tracking-normal">服务端验证</span>
               </h2>
               
-              <p class="text-gray-400 text-lg font-light leading-relaxed"
+              <p class="text-white/88 text-lg font-light leading-relaxed"
                  x-intersect:enter="animateElement($el, 'slide-right', 400)"
                  x-intersect:leave="resetElement($el, 'slide-right')"
                  class="opacity-0 -translate-x-8 transition-all duration-700 ease-out"
                  x-html="t('chapter8_p')">
-                 记录 <code class="text-white/80">.md</code>、<code class="text-white/80">/llms.txt</code> 等端点谁来访问了。<br/>看 <code class="text-white/80">User-Agent</code>、<code class="text-white/80">Referer</code>。
+                 记录 <code class="text-white/95">.md</code>、<code class="text-white/95">/llms.txt</code> 等端点谁来访问了。<br/>看 <code class="text-white/95">User-Agent</code>、<code class="text-white/95">Referer</code>。
               </p>
 
-              <div class="p-4 bg-orange-500/10 border border-orange-500/30 rounded-2xl w-full"
+              <div class="w-full rounded-2xl border border-[#F59E0B]/35 bg-[#F59E0B]/10 p-4"
                    x-intersect:enter="animateElement($el, 'fade-up', 600)"
                    x-intersect:leave="resetElement($el, 'fade-up')"
                    class="opacity-0 translate-y-8 transition-all duration-700 ease-out">
-                <p class="text-orange-200 text-sm" x-html="t('chapter8_tip')">
+                <p class="text-sm text-amber-100" x-html="t('chapter8_tip')">
                   <span class="font-bold">注意：</span>前端统计脚本对很多爬虫无效，最好看服务端或边缘日志。
                 </p>
+              </div>
+
+              <div class="w-full flex justify-center items-center py-4 px-6 glass-panel rounded-2xl border border-teal-950/20 max-h-[min(20vh,150px)] shrink-0"
+                   x-intersect:enter="animateElement($el, 'fade-up', 700)"
+                   x-intersect:leave="resetElement($el, 'fade-up')"
+                   class="opacity-0 translate-y-8 transition-all duration-700 ease-out">
+                <img src="./src/assets/feature-chart.svg" alt="" class="max-h-[min(15vh,110px)] w-full max-w-[280px] object-contain" loading="lazy" width="280" height="110" />
               </div>
            </div>
         </section>
 
         <!-- Chapter 9: 规避一些不切实际的做法 -->
-        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0c0c0c] text-white p-6">
-           <div class="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,_#441122_0%,_transparent_40%)] opacity-30 z-0 pointer-events-none"></div>
+        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0a0a0a] text-white p-6">
+           <div class="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,_rgba(234,88,12,0.12)_0%,_transparent_42%)] opacity-30 z-0 pointer-events-none"></div>
            <div class="z-10 flex flex-col items-start w-full space-y-6" x-intersect.threshold.0.5="activeChapter = 9">
-              <div class="inline-flex items-center space-x-2 bg-purple-500/20 border border-purple-500/30 px-3 py-1 rounded text-[10px] font-bold text-purple-300 uppercase tracking-widest"
+              <div class="inline-flex items-center space-x-2 rounded-full border border-teal-400/35 bg-teal-500/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-teal-100"
                    x-intersect:enter="animateElement($el, 'fade-up')"
                    x-intersect:leave="resetElement($el, 'fade-up')"
                    class="opacity-0 translate-y-8 transition-all duration-700 ease-out">
-                <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                <span class="w-2 h-2 rounded-full bg-[#0D9488]"></span>
                 <span x-text="t('chapter9_badge')">结尾</span>
               </div>
               
@@ -410,37 +469,44 @@
                   x-intersect:leave="resetElement($el, 'fade-up')"
                   class="opacity-0 translate-y-8 transition-all duration-700 ease-out"
                   x-html="t('chapter9_h2')">
-                规避不切实际的做法 <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-3xl font-mono mt-2 block tracking-normal">AI SEO?</span>
+                规避不切实际的做法 <br/> <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0D9488] to-[#14b8a6] text-3xl font-mono mt-2 block tracking-normal">AI SEO?</span>
               </h2>
               
-              <p class="text-gray-400 text-lg font-light leading-relaxed"
+              <p class="text-white/88 text-lg font-light leading-relaxed"
                  x-intersect:enter="animateElement($el, 'fade-up', 400)"
                  x-intersect:leave="resetElement($el, 'fade-up')"
                  class="opacity-0 translate-y-8 transition-all duration-700 ease-out"
                  x-html="t('chapter9_p')">
-                 很多“小技巧”看上去热闹：特殊 meta、隐藏指令、<code class="text-white/80">ai.txt</code> 提案。它们很难验证统一。
+                 很多“小技巧”看上去热闹：特殊 meta、隐藏指令、<code class="text-white/95">ai.txt</code> 提案。它们很难验证统一。
               </p>
 
-              <div class="p-4 bg-white/5 border-[1.555556px] border-white/10 rounded-[12px] shadow-[0_10px_40px_rgba(88,28,135,0.2)] w-full"
+              <div class="glass-panel w-full rounded-[12px] border-[1.555556px] border-white/10 p-4 shadow-[0_10px_40px_rgba(13,148,136,0.16)]"
                    x-intersect:enter="animateElement($el, 'scale-up', 600)"
                    x-intersect:leave="resetElement($el, 'scale-up')"
                    class="opacity-0 scale-95 transition-all duration-700 ease-out">
-                <p class="text-gray-300 text-sm leading-relaxed" x-html="t('chapter9_tip')">
+                <p class="text-white/92 text-sm leading-relaxed" x-html="t('chapter9_tip')">
                   更现实的做法，是把正文写清楚，把落点做干净，把协议接上，用日志验证。这通常是最省事的路线。
                 </p>
+              </div>
+
+              <div class="w-full relative aspect-video max-h-[min(26vh,200px)] shrink-0 overflow-hidden rounded-2xl border border-[#ea580c]/30 bg-black/70 shadow-[0_10px_36px_rgba(234,88,12,0.18)]"
+                   x-intersect:enter="animateElement($el, 'scale-up', 700)"
+                   x-intersect:leave="resetElement($el, 'scale-up')"
+                   class="opacity-0 scale-95 transition-all duration-700 ease-out">
+                <video class="w-full h-full object-cover" src="./src/assets/video-do-not-use.mp4" autoplay loop muted playsinline poster="./src/assets/SV-S39-M1-shot1.png"></video>
               </div>
            </div>
         </section>
 
         <!-- Chapter 10: 上线顺序建议 -->
-        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0c0c0c] text-white p-6">
-           <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_#221155_0%,_transparent_50%)] opacity-30 z-0 pointer-events-none"></div>
+        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0a0a0a] text-white p-6">
+           <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_rgba(13,148,136,0.15)_0%,_transparent_50%)] opacity-30 z-0 pointer-events-none"></div>
            <div class="z-10 flex flex-col items-start w-full space-y-5" x-intersect.threshold.0.5="activeChapter = 10">
-              <div class="inline-flex items-center space-x-2 bg-purple-500/20 border border-purple-500/30 px-3 py-1 rounded text-[10px] font-bold text-purple-300 uppercase tracking-widest"
+              <div class="inline-flex items-center space-x-2 rounded-full border border-teal-400/35 bg-teal-500/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-teal-100"
                    x-intersect:enter="animateElement($el, 'fade-up')"
                    x-intersect:leave="resetElement($el, 'fade-up')"
                    class="opacity-0 translate-y-8 transition-all duration-700 ease-out">
-                <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                <span class="w-2 h-2 rounded-full bg-[#ea580c]"></span>
                 <span x-text="t('chapter10_badge')">总结</span>
               </div>
               
@@ -452,38 +518,54 @@
                 上线顺序建议
               </h2>
               
-              <ol class="text-gray-300 text-[15px] space-y-2.5 font-light leading-snug w-full list-decimal pl-5 marker:text-purple-400 marker:font-bold"
+              <ol class="text-white/92 text-[15px] space-y-2.5 font-light leading-snug w-full list-decimal pl-5 marker:text-teal-400 marker:font-bold"
                  x-intersect:enter="animateElement($el, 'fade-up', 400)"
                  x-intersect:leave="resetElement($el, 'fade-up')"
                  class="opacity-0 translate-y-8 transition-all duration-700 ease-out">
-                 <li x-html="t('chapter10_li1')">审计 <code class="text-white/80">robots.txt</code>，勿误伤 AI 爬虫。</li>
-                 <li x-html="t('chapter10_li2')">添加根路径 <code class="text-white/80">/llms.txt</code> 和 <code class="text-white/80">/llms-full.txt</code>。</li>
-                 <li x-html="t('chapter10_li3')">为各页面提供 <code class="text-white/80">.md</code> 路由。</li>
-                 <li x-html="t('chapter10_li4')">加 <code class="text-white/80">&lt;link rel="alternate" type="text/markdown"&gt;</code> 等头。</li>
-                 <li x-html="t('chapter10_li5')">实现 <code class="text-white/80">Accept: text/markdown</code> 内容协商。</li>
+                 <li x-html="t('chapter10_li1')">审计 <code class="text-white/95">robots.txt</code>，勿误伤 AI 爬虫。</li>
+                 <li x-html="t('chapter10_li2')">添加根路径 <code class="text-white/95">/llms.txt</code> 和 <code class="text-white/95">/llms-full.txt</code>。</li>
+                 <li x-html="t('chapter10_li3')">为各页面提供 <code class="text-white/95">.md</code> 路由。</li>
+                 <li x-html="t('chapter10_li4')">加 <code class="text-white/95">&lt;link rel="alternate" type="text/markdown"&gt;</code> 等头。</li>
+                 <li x-html="t('chapter10_li5')">实现 <code class="text-white/95">Accept: text/markdown</code> 内容协商。</li>
                  <li x-html="t('chapter10_li6')">对端点做分析与监测。</li>
               </ol>
 
-              <div class="p-4 bg-white/5 border-[1.555556px] border-white/10 rounded-[12px] shadow-[0_10px_40px_rgba(88,28,135,0.2)] w-full"
+              <div class="w-full flex flex-wrap items-center justify-center gap-4 sm:gap-6 py-4 px-3 glass-panel rounded-2xl border border-teal-950/20 shrink-0"
+                   x-intersect:enter="animateElement($el, 'fade-up', 500)"
+                   x-intersect:leave="resetElement($el, 'fade-up')"
+                   class="opacity-0 translate-y-8 transition-all duration-700 ease-out">
+                <img src="./src/assets/feature-cms.svg" alt="" class="h-12 sm:h-14 w-auto object-contain max-w-[30%]" loading="lazy" width="120" height="56" />
+                <img src="./src/assets/feature-content.svg" alt="" class="h-12 sm:h-14 w-auto object-contain max-w-[30%]" loading="lazy" width="120" height="56" />
+                <img src="./src/assets/feature-wiki.svg" alt="" class="h-12 sm:h-14 w-auto object-contain max-w-[30%]" loading="lazy" width="120" height="56" />
+              </div>
+
+              <div class="w-full max-h-[min(14vh,100px)] rounded-xl overflow-hidden border border-white/10 opacity-90 shrink-0"
+                   x-intersect:enter="animateElement($el, 'scale-up', 550)"
+                   x-intersect:leave="resetElement($el, 'scale-up')"
+                   class="opacity-0 scale-95 transition-all duration-700 ease-out">
+                <img src="./src/assets/beijing.png" alt="" class="w-full h-full object-cover object-center max-h-[min(14vh,100px)]" loading="lazy" width="800" height="200" />
+              </div>
+
+              <div class="glass-panel w-full rounded-[12px] border-[1.555556px] border-white/10 p-4 shadow-[0_10px_40px_rgba(13,148,136,0.16)]"
                    x-intersect:enter="animateElement($el, 'scale-up', 600)"
                    x-intersect:leave="resetElement($el, 'scale-up')"
                    class="opacity-0 scale-95 transition-all duration-700 ease-out">
-                <p class="text-gray-400 text-[11px] leading-relaxed" x-html="t('chapter10_tip')">
-                  <span class="text-purple-400 font-bold">Tips:</span> 目标不是「操纵 AI」，而是像多年坚持语义化 HTML 一样，让内容对语言模型与代理也可读；其中大部分其实也是早该做好的 Web 卫生习惯。
+                <p class="text-white/88 text-[11px] leading-relaxed" x-html="t('chapter10_tip')">
+                  <span class="text-teal-400 font-bold">Tips:</span> 目标不是「操纵 AI」，而是像多年坚持语义化 HTML 一样，让内容对语言模型与代理也可读；其中大部分其实也是早该做好的 Web 卫生习惯。
                 </p>
               </div>
            </div>
         </section>
 
         <!-- Chapter 11: 为什么要推荐 Baklib -->
-        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0c0c0c] text-white p-6">
-           <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_#441122_0%,_transparent_50%)] opacity-30 z-0 pointer-events-none"></div>
+        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0a0a0a] text-white p-6">
+           <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_rgba(234,88,12,0.1)_0%,_transparent_50%)] opacity-30 z-0 pointer-events-none"></div>
            <div class="z-10 flex flex-col items-start w-full space-y-5" x-intersect.threshold.0.5="activeChapter = 11">
-              <div class="inline-flex items-center space-x-2 bg-purple-500/20 border border-purple-500/30 px-3 py-1 rounded text-[10px] font-bold text-purple-300 uppercase tracking-widest"
+              <div class="inline-flex items-center space-x-2 rounded-full border border-teal-400/35 bg-teal-500/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-teal-100"
                    x-intersect:enter="animateElement($el, 'fade-up')"
                    x-intersect:leave="resetElement($el, 'fade-up')"
                    class="opacity-0 translate-y-8 transition-all duration-700 ease-out">
-                <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                <span class="w-2 h-2 rounded-full bg-[#ea580c]"></span>
                 <span x-text="t('chapter11_badge')">推荐</span>
               </div>
               
@@ -494,8 +576,24 @@
                   x-html="t('chapter11_h2')">
                 为什么要推荐 Baklib
               </h2>
+
+              <div class="w-full flex flex-col items-stretch gap-3 shrink-0"
+                   x-intersect:enter="animateElement($el, 'fade-up', 250)"
+                   x-intersect:leave="resetElement($el, 'fade-up')"
+                   class="opacity-0 translate-y-8 transition-all duration-700 ease-out">
+                <div class="flex items-center justify-between gap-3 px-1">
+                  <img src="./src/assets/baklib-logo.svg" alt="" class="h-8 w-auto object-contain object-left" loading="lazy" width="120" height="32" />
+                  <img src="./src/assets/logo-white.svg" alt="" class="h-7 w-auto object-contain object-right opacity-90" loading="lazy" width="100" height="28" />
+                </div>
+                <div class="w-full max-h-[min(22vh,180px)] rounded-2xl overflow-hidden border border-white/10 shadow-[0_10px_40px_rgba(13,148,136,0.2)] bg-black/70">
+                  <img src="./src/assets/about-baklib.png" alt="" class="w-full h-full object-cover object-center max-h-[min(22vh,180px)]" loading="lazy" width="800" height="360" />
+                </div>
+                <div class="flex justify-center py-1">
+                  <img src="./src/assets/feature-ai.svg" alt="" class="h-12 w-auto max-w-full object-contain" loading="lazy" width="200" height="48" />
+                </div>
+              </div>
               
-              <p class="text-gray-400 text-sm font-light leading-relaxed"
+              <p class="text-white/88 text-sm font-light leading-relaxed"
                  x-intersect:enter="animateElement($el, 'fade-up', 300)"
                  x-intersect:leave="resetElement($el, 'fade-up')"
                  class="opacity-0 translate-y-8 transition-all duration-700 ease-out"
@@ -503,18 +601,18 @@
                  作为一个 All-in-one 的数字体验管理平台，是企业独立营销首选，AI SEO 首选，网站建设首选。
               </p>
               
-              <ol class="text-gray-300 text-[13px] font-light leading-relaxed w-full list-decimal pl-5 marker:text-purple-400 marker:font-bold space-y-2"
+              <ol class="text-white/92 text-[13px] font-light leading-relaxed w-full list-decimal pl-5 marker:text-teal-400 marker:font-bold space-y-2"
                  x-intersect:enter="animateElement($el, 'fade-up', 400)"
                  x-intersect:leave="resetElement($el, 'fade-up')"
                  class="opacity-0 translate-y-8 transition-all duration-700 ease-out">
                  <li x-html="t('chapter11_li1')">全站实现 AI Ready，已从底层 MCP 设计到上层体验应用都贯穿大模型支持。</li>
-                 <li x-html="t('chapter11_li2')">站点默认支持 <code class="text-white/80">llms.txt</code> 和 <code class="text-white/80">llms-full.txt</code>。</li>
-                 <li x-html="t('chapter11_li3')">每篇文章都支持 <code class="text-white/80">.md</code> 格式，并且支持自定义输出（只需要给变量指定属性：<code class="text-purple-300">"to_markdown": true</code>）。</li>
+                 <li x-html="t('chapter11_li2')">站点默认支持 <code class="text-white/95">llms.txt</code> 和 <code class="text-white/95">llms-full.txt</code>。</li>
+                 <li x-html="t('chapter11_li3')">每篇文章都支持 <code class="text-white/95">.md</code> 格式，并且支持自定义输出（只需要给变量指定属性：<code class="text-[#ea580c]">"to_markdown": true</code>）。</li>
                  <li x-html="t('chapter11_li4')">完全的低代码模板自定义，满足多语言、多场景个性化需求。</li>
               </ol>
 
               <a href="https://www.baklib.com" target="_blank"
-                 class="mt-4 w-full block py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-[12px] font-black text-center text-lg tracking-tight shadow-[0_10px_40px_rgba(88,28,135,0.4)] uppercase text-white active:scale-95 transition-all outline-none"
+                 class="mt-4 w-full block py-4 rounded-[12px] bg-gradient-to-r from-[#0D9488] to-[#0f766e] text-center text-lg font-bold tracking-tight text-white shadow-[0_12px_36px_rgba(13,148,136,0.35)] uppercase transition-all outline-none active:scale-95 hover:from-[#0f766e] hover:to-[#0D9488]"
                  x-intersect:enter="animateElement($el, 'scale-up', 600)"
                  x-intersect:leave="resetElement($el, 'scale-up')"
                  class="opacity-0 scale-95 transition-all duration-700 ease-out"
@@ -525,7 +623,10 @@
         </section>
 
         <!-- Chapter 12: Ending -->
-        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0c0c0c] text-white p-6 text-center">
+        <section class="h-[100dvh] w-full snap-start snap-always relative flex flex-col justify-center items-center bg-[#0a0a0a] text-white p-6 text-center overflow-hidden">
+           <div class="pointer-events-none absolute inset-0 z-0 opacity-30">
+             <img src="./src/assets/背景2.png" alt="" class="w-full h-full object-cover object-bottom scale-110" loading="lazy" width="900" height="1200" />
+           </div>
            <div class="z-10 flex flex-col items-center w-full space-y-6" x-intersect.threshold.0.5="activeChapter = 12">
               
               <h2 class="text-4xl font-black leading-none italic tracking-tighter"
@@ -536,7 +637,7 @@
                 更现实的做法
               </h2>
               
-              <p class="text-gray-400 text-lg font-light leading-relaxed max-w-[280px]"
+              <p class="text-white/88 text-lg font-light leading-relaxed max-w-[280px]"
                  x-intersect:enter="animateElement($el, 'fade-up', 400)"
                  x-intersect:leave="resetElement($el, 'fade-up')"
                  class="opacity-0 translate-y-8 transition-all duration-700 ease-out"
@@ -544,7 +645,7 @@
                  把正文写清楚，<br/>把落点做干净，<br/>把协议接上，<br/>然后用日志验证。
               </p>
 
-              <button class="mt-8 w-full block py-5 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-[12px] font-black text-lg tracking-tight shadow-[0_10px_40px_rgba(88,28,135,0.4)] uppercase text-white active:scale-95 transition-all"
+              <button class="mt-8 block w-full rounded-[12px] bg-gradient-to-r from-[#0D9488] via-[#0f766e] to-[#ea580c] py-5 text-lg font-bold uppercase tracking-tight text-white shadow-[0_12px_36px_rgba(234,88,12,0.25)] transition-all active:scale-95 hover:opacity-95"
                       x-intersect:enter="animateElement($el, 'scale-up', 600)"
                       x-intersect:leave="resetElement($el, 'scale-up')"
                       class="opacity-0 scale-95 transition-all duration-700 ease-out"
@@ -564,14 +665,14 @@
       </div>
       
       <!-- Fixed Progress Bar top -->
-      <div class="absolute top-0 left-0 w-full h-1 bg-white/10 z-50">
-        <div class="h-full bg-gradient-to-r from-blue-400 to-purple-600 transition-all duration-200 ease-out" :style="`width: ${scrollProgress}%`"></div>
+      <div class="absolute left-0 top-0 z-50 h-1 w-full bg-black/90">
+        <div class="h-full bg-gradient-to-r from-[#0D9488] to-[#ea580c] transition-all duration-200 ease-out" :style="`width: ${scrollProgress}%`"></div>
       </div>
       
       <!-- Language Toggle Button -->
       <button 
         @click="toggleLang()" 
-        class="absolute top-4 right-4 z-50 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white px-3 py-1.5 rounded-full text-xs font-medium tracking-wider transition-colors"
+        class="absolute top-4 right-4 z-50 rounded-full border border-teal-400/30 bg-white/[0.08] px-3 py-1.5 text-xs font-medium tracking-wider text-white backdrop-blur-md transition-colors hover:border-teal-300/45 hover:bg-teal-500/15"
         x-text="lang === 'zh' ? 'EN' : '中'"
       >
         EN
