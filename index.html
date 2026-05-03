@@ -20,7 +20,7 @@
     >
       <!-- Scrollable Content -->
       <div 
-        class="flex-1 overflow-y-auto overflow-x-hidden snap-y snap-mandatory scroll-smooth relative" 
+        class="relative flex-1 snap-y snap-mandatory scroll-smooth overflow-y-auto overflow-x-hidden pt-[46px]" 
         @scroll.passive="onScroll"
         x-ref="scrollContainer"
       >
@@ -377,12 +377,7 @@
                    x-intersect:leave="resetElement($el, 'scale-up')">
                 <p class="text-xs font-mono text-white/92 break-all" x-html="t('chapter7_tip')"><span class="text-teal-400">示例代码：</span><br/>Accept: text/markdown, text/html;q=0.9</p>
               </div>
-              <div class="w-full relative aspect-square rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(13,148,136,0.16)] border border-white/10"
-                   x-intersect:enter="animateElement($el, 'fade-up', 600)"
-                   x-intersect:leave="resetElement($el, 'fade-up')"
-                   class="opacity-0 translate-y-8 transition-all duration-700 ease-out">
-                <video class="w-full h-full object-cover" src="./src/assets/video-hero.mp4" autoplay loop muted playsinline poster="./src/assets/SV-S39-M2-shot2.png"></video>
-              </div>
+              
            </div>
         </section>
 
@@ -644,15 +639,30 @@
 
       </div>
       
-      <!-- Fixed Progress Bar top -->
-      <div class="absolute left-0 top-0 z-50 h-1 w-full bg-black/90">
-        <div class="h-full bg-gradient-to-r from-[#0D9488] to-[#ea580c] transition-all duration-200 ease-out" :style="`width: ${scrollProgress}%`"></div>
+      <!-- 顶部：章节简写 + 滚动进度 + 13 段刻度 -->
+      <div class="absolute left-0 top-0 z-50 w-full border-b border-white/10 bg-black/88 backdrop-blur-md">
+        <div class="flex items-baseline gap-2 pl-2.5 pr-[4.25rem] pt-1.5">
+          <span class="min-w-0 flex-1 truncate text-[11px] font-semibold leading-tight tracking-tight text-white" x-text="chapterNavShort(activeChapter)"></span>
+          <span class="shrink-0 text-[10px] font-medium tabular-nums leading-none text-white/55" x-text="(activeChapter + 1) + '/' + 13"></span>
+        </div>
+        <div class="relative mt-1 h-1 w-full bg-white/10">
+          <div class="h-full bg-gradient-to-r from-[#0D9488] to-[#ea580c] transition-all duration-200 ease-out" :style="`width: ${scrollProgress}%`"></div>
+        </div>
+        <div class="flex gap-px px-1 pb-1 pt-0.5">
+          <template x-for="idx in chapterNavIndices" :key="idx">
+            <div
+              class="h-[3px] min-w-0 flex-1 rounded-sm transition-colors duration-200"
+              :class="activeChapter === idx ? 'bg-teal-400 shadow-[0_0_6px_rgba(45,212,191,0.45)]' : activeChapter > idx ? 'bg-teal-600/45' : 'bg-white/[0.07]'"
+              :title="chapterNavShort(idx)"
+            ></div>
+          </template>
+        </div>
       </div>
       
       <!-- Language Toggle Button -->
       <button 
         @click="toggleLang()" 
-        class="absolute top-4 right-4 z-50 rounded-full border border-teal-400/30 bg-white/[0.08] px-3 py-1.5 text-xs font-medium tracking-wider text-white backdrop-blur-md transition-colors hover:border-teal-300/45 hover:bg-teal-500/15"
+        class="absolute right-2 top-1.5 z-[60] rounded-full border border-teal-400/30 bg-white/[0.08] px-2.5 py-1 text-[11px] font-medium tracking-wider text-white backdrop-blur-md transition-colors hover:border-teal-300/45 hover:bg-teal-500/15"
         x-text="lang === 'zh' ? 'EN' : '中'"
       >
         EN

@@ -1,5 +1,20 @@
 export const translations = {
   zh: {
+    /** 顶部进度条：章节简写（尽量短） */
+    nav_s0: `开篇`,
+    nav_s1: `robots`,
+    nav_s2: `llms.txt`,
+    nav_s3: `.md`,
+    nav_s4: `Link`,
+    nav_s5: `隐藏`,
+    nav_s6: `full`,
+    nav_s7: `Accept`,
+    nav_s8: `验证`,
+    nav_s9: `避坑`,
+    nav_s10: `顺序`,
+    nav_s11: `Baklib`,
+    nav_s12: `结语`,
+
     chapter0_h1: `如何让网站<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">对大模型可见</span>`,
     chapter0_p: `用户不再搜索，而是提问。<br/>你的网站准备好迎接<br/>AI读者了吗？`,
     
@@ -85,6 +100,20 @@ export const translations = {
     chapter12_cta: `开始你的改造`,
   },
   en: {
+    nav_s0: `Intro`,
+    nav_s1: `robots`,
+    nav_s2: `llms`,
+    nav_s3: `.md`,
+    nav_s4: `Link`,
+    nav_s5: `sr-only`,
+    nav_s6: `full`,
+    nav_s7: `Accept`,
+    nav_s8: `verify`,
+    nav_s9: `myths`,
+    nav_s10: `steps`,
+    nav_s11: `Baklib`,
+    nav_s12: `Outro`,
+
     chapter0_h1: `How to make your site<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600">LLM-Visible</span>`,
     chapter0_p: `Users don't search anymore, they ask.<br/>Is your website ready for<br/>AI readers?`,
     

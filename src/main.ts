@@ -29,7 +29,14 @@ Alpine.data('appData', function() {
       if (!el) return;
       const scrollHeight = el.scrollHeight - el.clientHeight;
       const scrollTop = el.scrollTop;
-      this.scrollProgress = (scrollTop / scrollHeight) * 100;
+      this.scrollProgress = scrollHeight <= 0 ? 0 : (scrollTop / scrollHeight) * 100;
+    },
+
+    chapterNavIndices: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+
+    chapterNavShort(i: number) {
+      const key = `nav_s${i}` as keyof typeof translations['zh'];
+      return this.t(key);
     },
 
     animateElement(el: any, animationClass: string, delay = 0) {
